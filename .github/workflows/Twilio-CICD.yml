@@ -39,4 +39,4 @@ jobs:
 
       - name: Deploy Twilio Functions
         working-directory: Twilio
-        run: npx twilio serverless:deploy --force
+        run: npm run deploy
