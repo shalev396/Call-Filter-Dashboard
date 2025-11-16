@@ -1,9 +1,9 @@
 import https from "https";
 import { Config } from "../types/index.js";
 
-const TWILIO_ACCOUNT_SID = process.env["TWILIO_ACCOUNT_SID"]!;
-const TWILIO_AUTH_TOKEN = process.env["TWILIO_AUTH_TOKEN"]!;
-const TWILIO_ASSET_SERVICE_SID = process.env["TWILIO_ASSET_SERVICE_SID"]!;
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
+const TWILIO_ASSET_SERVICE_SID = process.env.TWILIO_ASSET_SERVICE_SID;
 
 const CONFIG_ASSET_PATH = "/config.json";
 

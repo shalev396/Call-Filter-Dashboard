@@ -9,7 +9,7 @@ export const createResponse = <T = unknown>(
     statusCode,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': process.env['CORS_ORIGIN'] || '*',
+      'Access-Control-Allow-Origin': process.env.CORS_ORIGIN,
       'Access-Control-Allow-Credentials': 'true',
     },
     body: JSON.stringify(body),

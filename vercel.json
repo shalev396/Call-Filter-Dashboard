@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://bmaktglrs2.execute-api.il-central-1.amazonaws.com/:path*"
-    }
-  ]
-}

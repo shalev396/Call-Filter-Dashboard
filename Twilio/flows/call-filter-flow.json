@@ -1,0 +1,138 @@
+{
+  "description": "Call Filter Flow - Updated",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "event": "incomingMessage"
+        },
+        {
+          "next": "CheckIfForward",
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingConversationMessage"
+        },
+        {
+          "event": "incomingRequest"
+        },
+        {
+          "event": "incomingParent"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "CheckIfForward",
+      "type": "run-function",
+      "transitions": [
+        {
+          "next": "CheckResult",
+          "event": "success"
+        },
+        {
+          "next": "SayNotAvailable",
+          "event": "fail"
+        }
+      ],
+      "properties": {
+        "service_sid": "YOUR_SERVICE_SID",
+        "environment_sid": "YOUR_ENVIRONMENT_SID",
+        "function_sid": "YOUR_FUNCTION_SID",
+        "offset": {
+          "x": 160,
+          "y": 210
+        },
+        "parameters": [
+          {
+            "value": "{{trigger.call.From}}",
+            "key": "from"
+          }
+        ],
+        "url": "https://YOUR_TWILIO_DOMAIN.twil.io/isForward"
+      }
+    },
+    {
+      "name": "CheckResult",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "ForwardCall",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to true",
+              "arguments": ["{{widgets.CheckIfForward.parsed.allow}}"],
+              "type": "equal_to",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "next": "SayNotAvailable",
+          "event": "noMatch"
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.CheckIfForward.parsed.allow}}",
+        "offset": {
+          "x": 160,
+          "y": 450
+        }
+      }
+    },
+    {
+      "name": "ForwardCall",
+      "type": "connect-call-to",
+      "transitions": [
+        {
+          "event": "callCompleted"
+        },
+        {
+          "event": "hangup"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 670
+        },
+        "caller_id": "{{contact.channel.address}}",
+        "noun": "number",
+        "to": "+972559205070",
+        "timeout": 30
+      }
+    },
+    {
+      "name": "SayNotAvailable",
+      "type": "say-play",
+      "transitions": [
+        {
+          "event": "audioComplete"
+        }
+      ],
+      "properties": {
+        "voice": "Polly.Ayelet",
+        "offset": {
+          "x": 330,
+          "y": 670
+        },
+        "loop": 1,
+        "say": "הלקוח לא זמין כרגע. אנא נסה שוב בין השעות 9:00 בבוקר ל-4:00 אחר הצהריים",
+        "language": "he-IL"
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}
+

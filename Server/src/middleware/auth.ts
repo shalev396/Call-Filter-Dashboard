@@ -21,7 +21,7 @@ export interface AuthUser {
 export const extractAuthUser = (
   event: APIGatewayProxyEventV2
 ): AuthUser | null => {
-  const isLocal = process.env["IS_LOCAL"] === "true";
+  const isLocal = process.env.IS_LOCAL === "true";
 
   if (isLocal) {
     // Local dev - parse JWT from Authorization header (no validation!)

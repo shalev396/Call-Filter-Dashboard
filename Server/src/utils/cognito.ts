@@ -8,11 +8,11 @@ import {
 } from '@aws-sdk/client-cognito-identity-provider';
 
 const client = new CognitoIdentityProviderClient({
-  region: process.env['AWS_REGION'] || 'us-east-1',
+  region: process.env.AWS_REGION,
 });
 
-const USER_POOL_ID = process.env['COGNITO_USER_POOL_ID']!;
-const CLIENT_ID = process.env['COGNITO_CLIENT_ID']!;
+const USER_POOL_ID = process.env.COGNITO_USER_POOL_ID;
+const CLIENT_ID = process.env.COGNITO_CLIENT_ID;
 
 export const authenticateUser = async (email: string, password: string) => {
   const command = new AdminInitiateAuthCommand({

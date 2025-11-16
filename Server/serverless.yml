@@ -124,7 +124,7 @@ functions:
     package:
       patterns:
         - "!build/**"
-        - "build/auth/login.js"
+        - "build/auth/login.mjs"
     events:
       - httpApi:
           path: /api/auth/login
@@ -136,7 +136,7 @@ functions:
     package:
       patterns:
         - "!build/**"
-        - "build/auth/refreshToken.js"
+        - "build/auth/refreshToken.mjs"
     events:
       - httpApi:
           path: /api/auth/refresh
@@ -148,7 +148,7 @@ functions:
     package:
       patterns:
         - "!build/**"
-        - "build/auth/forgotPassword.js"
+        - "build/auth/forgotPassword.mjs"
     events:
       - httpApi:
           path: /api/auth/forgot-password
@@ -160,7 +160,7 @@ functions:
     package:
       patterns:
         - "!build/**"
-        - "build/auth/resetPassword.js"
+        - "build/auth/resetPassword.mjs"
     events:
       - httpApi:
           path: /api/auth/reset-password
@@ -176,7 +176,7 @@ functions:
     package:
       patterns:
         - "!build/**"
-        - "build/config/get.js"
+        - "build/config/get.mjs"
     events:
       - httpApi:
           path: /api/config
@@ -190,7 +190,7 @@ functions:
     package:
       patterns:
         - "!build/**"
-        - "build/config/update.js"
+        - "build/config/update.mjs"
     events:
       - httpApi:
           path: /api/config
@@ -208,7 +208,7 @@ functions:
     package:
       patterns:
         - "!build/**"
-        - "build/health.js"
+        - "build/health.mjs"
     events:
       - httpApi:
           path: /api/health

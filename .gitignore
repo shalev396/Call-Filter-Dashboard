@@ -1,5 +1,5 @@
 # Root level gitignore - covers all subfolders
-
+.vercel
 # Dependencies
 node_modules/
 /.pnp
@@ -73,3 +73,5 @@ Dockerfile.dev
 *.zip
 *.tar.gz
 
+
+.vercel

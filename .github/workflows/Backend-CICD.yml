@@ -1,0 +1,64 @@
+name: Backend CI/CD
+
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Server/**"
+      - ".github/workflows/Backend-CICD.yml"
+
+jobs:
+  deploy-backend:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: Production
+
+    env:
+      # Non-sensitive configuration from environment variables
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      DOMAIN: ${{ vars.DOMAIN }}
+      # Sensitive data from secrets (automatically masked in logs)
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+      SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+      COGNITO_USER_POOL_ID: ${{ secrets.COGNITO_USER_POOL_ID }}
+      COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
+      TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+      TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+      TWILIO_ASSET_SERVICE_SID: ${{ secrets.TWILIO_ASSET_SERVICE_SID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: Server/package-lock.json
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/github-actions-role
+
+      - name: Install dependencies
+        working-directory: Server
+        run: npm ci
+
+      - name: Build TypeScript
+        working-directory: Server
+        run: npm run build
+
+      - name: Deploy to prod stage
+        working-directory: Server
+        env:
+          IS_LOCAL: "false"
+        run: npm run deploy

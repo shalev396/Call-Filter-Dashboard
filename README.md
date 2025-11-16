@@ -43,3 +43,4 @@ cd Twilio && npm install && twilio serverless:deploy
 - **Client**: `Docs/CLIENT.md` - Frontend setup
 - **Server**: `Docs/SERVER.md` - Backend setup
 - **Twilio**: `Docs/TWILIO.md` - Functions & flows
+- **CI/CD**: `Docs/CICD.md` - GitHub Actions deployment
