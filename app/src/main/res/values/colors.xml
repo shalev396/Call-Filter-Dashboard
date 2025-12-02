@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Midnight Blue Dark Theme -->
+    <color name="dark_colorPrimary">#1A237E</color> <!-- Indigo 900 -->
+    <color name="dark_colorPrimaryDark">#101861</color> <!-- Darker Indigo -->
+    <color name="dark_colorAccent">#82B1FF</color> <!-- Light Blue A100 -->
+    <color name="dark_color_accent_variant">#448AFF</color> <!-- Blue A200 -->
+    <color name="dark_window_background">#0D1230</color> <!-- Very Dark Blue -->
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#B3FFFFFF</color>
+    <color name="dark_card_background">#1C275A</color> <!-- Dark Blue-Gray -->
+
+    <!-- General Colors -->
+    <color name="white">#FFFFFF</color>
+</resources>

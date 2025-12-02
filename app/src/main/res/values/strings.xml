@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Call Filter</string>
+    <string name="service_active">Service Active</string>
+    <string name="service_inactive">Service Inactive</string>
+    <string name="home">Home</string>
+    <string name="whitelist">Whitelist</string>
+    <string name="schedule">Schedule</string>
+    <string name="log">Log</string>
+    <string name="edit_time_window">Edit Time Window</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="explanation">When enabled, calls from numbers not in your whitelist will be silenced if they are outside of your scheduled hours. You can review all blocked calls in the Log.</string>
+    <string name="schedule_guidance">To add or edit your availability, go to the Schedule page.</string>
+    <string name="unknown">Unknown</string>
+    <string name="call_button_description">Call button</string>
+    <string name="blocked_call_log">Blocked Call Log</string>
+    <string name="log_subtitle">Here are the calls that were denied by the filter.</string>
+    <string name="availability_schedule">Availability Schedule</string>
+    <string name="schedule_subtitle">Mark when you are available to receive calls.</string>
+    <string name="add_schedule_fab_description">Add a new schedule</string>
+    <string name="whitelisted_contacts">Whitelisted Contacts</string>
+    <string name="whitelist_subtitle">These contacts will bypass the filter and always ring.</string>
+    <string name="search_contacts">Search contacts</string>
+    <string name="add_contact_fab_description">Add a new contact</string>
+    <string name="add_from_contacts">+ Add from contacts</string>
+    <string name="remove_contact_button_description">Remove contact button</string>
+    <string name="add_time_window_button">+ Add time window</string>
+</resources>
