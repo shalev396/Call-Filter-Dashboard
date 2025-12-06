@@ -1,4 +1,4 @@
-package com.example.offdutycallfilter;
+package com.shalev396.offdutycallfilter;
 
 import android.app.role.RoleManager;
 import android.content.Intent;

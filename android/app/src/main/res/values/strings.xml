@@ -62,6 +62,10 @@
 
     <!-- Symbols -->
     <string name="arrow_right">→</string>
+
+    <!-- Filter status -->
+    <string name="filter_status_enabled">Service enabled</string>
+    <string name="filter_status_disabled">Service disabled</string>
     
     <!-- Content Descriptions for Accessibility -->
     <string name="cd_call_protection_status">Call protection status</string>

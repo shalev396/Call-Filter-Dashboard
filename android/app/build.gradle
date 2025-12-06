@@ -3,22 +3,23 @@ plugins {
 }
 
 android {
-    namespace "com.example.offdutycallfilter"
+    namespace "com.shalev396.offdutycallfilter"
     compileSdkVersion 36
 
     defaultConfig {
-        applicationId "com.example.offdutycallfilter"
+        applicationId "com.shalev396.offdutycallfilter"
         minSdkVersion 29
         targetSdkVersion 36
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

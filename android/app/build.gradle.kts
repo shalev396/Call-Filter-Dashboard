@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.offdutycallfilter"
+    namespace = "com.shalev396.offdutycallfilter"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.offdutycallfilter"
+        applicationId = "com.shalev396.offdutycallfilter"
         minSdk = 29
         targetSdk = 36
         versionCode = 1

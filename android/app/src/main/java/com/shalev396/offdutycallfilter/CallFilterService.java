@@ -1,4 +1,4 @@
-package com.example.offdutycallfilter;
+package com.shalev396.offdutycallfilter;
 
 import android.telecom.Call;
 import android.telecom.CallScreeningService;

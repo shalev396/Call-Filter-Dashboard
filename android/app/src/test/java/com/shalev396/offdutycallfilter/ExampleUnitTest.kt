@@ -1,4 +1,4 @@
-package com.example.offdutycallfilter
+package com.shalev396.offdutycallfilter
 
 import org.junit.Test
 

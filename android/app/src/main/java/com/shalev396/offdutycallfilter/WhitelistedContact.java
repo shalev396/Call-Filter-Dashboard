@@ -1,4 +1,4 @@
-package com.example.offdutycallfilter;
+package com.shalev396.offdutycallfilter;
 
 public class WhitelistedContact {
     private final String name;

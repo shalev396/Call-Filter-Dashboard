@@ -1,4 +1,4 @@
-package com.example.offdutycallfilter;
+package com.shalev396.offdutycallfilter;
 
 public class BlockedCall {
     private final String number;

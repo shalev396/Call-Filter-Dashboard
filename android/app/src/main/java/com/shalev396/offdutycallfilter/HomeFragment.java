@@ -1,4 +1,4 @@
-package com.example.offdutycallfilter;
+package com.shalev396.offdutycallfilter;
 
 import android.Manifest;
 import android.app.role.RoleManager;
@@ -30,6 +30,7 @@ public class HomeFragment extends Fragment {
 
     private SwitchMaterial switchCallFilter;
     private ConfigManager configManager;
+    private TextView filterStatusText;
     
     // Permissions Card
     private LinearLayout permissionsCard;
@@ -75,6 +76,7 @@ public class HomeFragment extends Fragment {
 
         configManager = new ConfigManager(requireContext());
         switchCallFilter = view.findViewById(R.id.switch_call_filter);
+        filterStatusText = view.findViewById(R.id.text_filter_status);
         permissionsCard = view.findViewById(R.id.permissions_card);
         permissionStatusText = view.findViewById(R.id.permission_status_text);
         permissionStatusDescription = view.findViewById(R.id.permission_status_description);
@@ -84,8 +86,10 @@ public class HomeFragment extends Fragment {
         Button buttonResetData = view.findViewById(R.id.button_reset_data);
 
         switchCallFilter.setChecked(configManager.isEnabled());
+        updateFilterStatusLabel(configManager.isEnabled());
 
         switchCallFilter.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            updateFilterStatusLabel(isChecked);
             if (isChecked) {
                 requestAllPermissions();
             } else {
@@ -269,6 +273,7 @@ public class HomeFragment extends Fragment {
             
             // Update switch state
             switchCallFilter.setChecked(configManager.isEnabled());
+            updateFilterStatusLabel(configManager.isEnabled());
             
         } else if (!hasContacts && !hasCallScreening) {
             // Both missing
@@ -283,6 +288,7 @@ public class HomeFragment extends Fragment {
             
             switchCallFilter.setChecked(false);
             configManager.setEnabled(false);
+            updateFilterStatusLabel(false);
             
         } else if (!hasContacts) {
             // Only contacts missing
@@ -294,6 +300,8 @@ public class HomeFragment extends Fragment {
             permissionStatusDescription.setVisibility(View.VISIBLE);
             buttonGrantPermission.setText(R.string.grant_contacts_permission);
             buttonGrantPermission.setVisibility(View.VISIBLE);
+            
+            updateFilterStatusLabel(false);
             
         } else {
             // Only call screening missing
@@ -308,7 +316,15 @@ public class HomeFragment extends Fragment {
             
             switchCallFilter.setChecked(false);
             configManager.setEnabled(false);
+            updateFilterStatusLabel(false);
         }
+    }
+
+    private void updateFilterStatusLabel(boolean enabled) {
+        int color = ContextCompat.getColor(requireContext(),
+                enabled ? R.color.color_success : R.color.dark_text_secondary);
+        filterStatusText.setText(enabled ? R.string.filter_status_enabled : R.string.filter_status_disabled);
+        filterStatusText.setTextColor(color);
     }
 
     private void showResetConfirmationDialog() {
